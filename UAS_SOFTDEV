@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARAT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Merriweather', serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: #fff;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo img {
+            margin-left: 10px;
+            width: 100px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding-left: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #8B4513;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #c9ad93;
+        }
+
+        nav ul li .dropdown-menu {
+            background-color: #fff;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 10px;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 2000;
+        }
+
+        nav ul li:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: #ffd1dc;
+            color: #a2c4c9;
+            border-radius: 4px;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            margin-right: 50px;
+        }
+
+        .user-actions .icon {
+            text-decoration: none;
+            color: #8B4513;
+            font-size: 20px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .user-actions .icon:hover {
+            color: #c9ad93;
+        }
+
+        .user-actions .icon-cart {
+            color: #8B4513;
+        }
+
+        .user-actions .sign-in {
+            text-decoration: none;
+            color: #8B4513;
+            font-weight: bold;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .user-actions .sign-in:hover {
+            color: #c9ad93;
+        }
+
+        .user-actions .cart-count {
+            background: #ffd1dc;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 14px;
+            vertical-align: top;
+            margin-left: 5px;
+        }
+
+        .navbar-brand img {
+            width: 100px;
+            height: auto;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin-top: 3.5rem;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            object-fit: cover;
+            z-index: -1;
+            margin: 20px;
+            border-radius: 20px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            border-radius: 20px;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 80%;
+        }
+
+        .products {
+            padding: 50px 20px;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+        }
+
+        .product {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+        }
+
+        .product h5 {
+            margin: 20px 0 10px;
+            font-size: 20px;
+        }
+
+        .product p {
+            font-size: 18px;
+            color: #c9ad93;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Styling for Footer */
+        .footer {
+            background-color: #f3e7e9;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #b8d8d8;
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .footer .footer-top {
+            padding-bottom: 20px;
+        }
+
+        .footer .footer-about {
+            color: #333;
+        }
+
+        .footer .footer-about .sitename {
+            color: #e7467f;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .footer p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .footer .social-links a {
+            color: #333;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .footer .social-links a:hover {
+            color: #e7467f;
+        }
+
+        .footer .footer-links h4,
+        .footer .footer-contact h4 {
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer .footer-links ul,
+        .footer .footer-contact p {
+            color: #666;
+        }
+
+        .footer .footer-links ul li,
+        .footer .footer-contact p {
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-contact strong {
+            color: #333;
+        }
+
+        .footer .credits {
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .footer .credits a {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .footer .credits a:hover {
+            color: #e7467f;
+        }
+
+        .footer{
+    background-color: #add8e6 ;/* Warna biru pastel menggunakan kode hex */
+
+    
+    padding: 20px; 
+/* Menambahkan jarak dari bagian isi footer */
+        }
+
+        .socials a {
+            display: inline-block;
+            margin: 10px;
+            color: #8B4513;
+            font-size: 20px;
+        }
+
+        .socials a:hover {
+            color: #c9ad93;
+        }
+
+        .shadow-link {
+             padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .shadow-link:hover {
+            background-color: #2980b9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .product {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+     }
+
+.product.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+        .search-form {
+            display: none;
+            position: absolute;
+            top: 90px;
+            right: 50px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1000;
+        }
+
+        .search-form form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-form input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        .search-form button {
+            background-color: #8B4513;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-form button:hover {
+            background-color: #c9ad93;
+        }
+
+        /* Styling for Work Collection section */
+        #work {
+            padding: 80px 0;
+            background-color: #f8f8f8;
+        }
+
+        #work .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        #work .section-title h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        #work .section-title p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        #work .work-thumb {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #work .work-thumb img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        #work .work-thumb:hover img {
+            transform: scale(1.1);
+        }
+
+        #work .work-thumb a {
+            display: block;
+        }
+
+        #work h4 {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Animation using Animate.css */
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        /* Custom animation delays */
+        .animated:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+
+        .animated:nth-child(even) {
+            animation-delay: 0.6s;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .categories {
+            padding: 50px 20px;
+            background: #f3e7e9;
+            margin-bottom: 10px;
+        }
+
+        .categories h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .categories ul li {
+            margin: 10px 0;
+        }
+
+        .categories ul li a {
+            text-decoration: none;
+            color: #8B4513;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .categories ul li a:hover {
+            color: #c9ad93;
+        }
+
+        .about-us {
+            padding: 50px 20px;
+            background: #fff;
+            margin-bottom: 10px;
+        }
+
+        .about-us img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .about-us .content {
+            padding: 20px;
+        }
+
+        .about-us .content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-us .content p {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .card-video {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+        .card-video video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .card-body h5 {
+            text-align: center;
+        }
+    </style>
+    
+</head>
+
+<body>
+   <!-- Header Section -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="UAS_MANIES.PHP">
+                <img src="images/svt.png" alt="Brand Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LATEST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TRENDY</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            TIMELESS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Classic Clothes</a></li>
+                            <li><a class="dropdown-item" href="#">Classic Shoes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GRAPHICS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ACCESSORIES</a></li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <a href="#" class="nav-link"><i class="fas fa-search"></i></a>
+                <a href="#" class="nav-link"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <section class="hero">
+        <div class="hero-overlay animate__animated animate__fadeIn"></div>
+        <img src="images/enhp.png" alt="Hero Image" class="hero-image animate__animated animate__zoomIn">
+        <div class="hero-text">
+            <h1 class="animate__animated animate__fadeInUp">CARAT'S FASHION</h1>
+            <p class="animate__animated animate__fadeInUp">Minimalist wardrobe you wished for!</p>
+            <a href="LATEST.PHP" class="shop-now shadow-link animate__animated animate__fadeInUp">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="container">
+        <h1 class="section-title text-center mb-5">COLLECTION AT CARAT'S</h1>
+        <h3 class="section-title text-left mb-2">OUR BRAND AMBASADOR</h3>
+        <p class="text-left mb-3">
+            <a href="trend.php" class="shadow-link">See Other Products</a>
+        </p>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="product">
+                    <img src="images/trend6.jpg" alt="Urban Stealth Jacket" class="img-fluid">
+                    <h5>Urban Stealth Jacket</h5>
+                    <p class="text-muted">$20.00</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product">
+                    <img src="images/trend2.jpg" alt="Shadow Racer Jacket" class="img-fluid">
+                    <h5>Shadow Racer Jacket</h5>
+                    <p class="text-muted">$25.00</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="product">
+                    <img src="images/trend4.jpg" alt="Classic Denim Jacket" class="img-fluid">
+                    <h5>Classic Denim Jacket</h5>
+                    <p class="text-muted">$30.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section class="categories container">
+    <h3 class="section-title text-left mb-2 animate__animated animate__fadeInUp">CATEGORIES</h3>
+    <div class="row animate__animated animate__fadeInUp">
+        <div class="col-sm-4 mb-3">
+            <div class="card">
+                <a href="sepatuklasik.php">
+                    <div class="card-video">
+                        <video controls class="img-fluid">
+                            <source src="images/doy.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title text-center">SEPATU S24</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 mb-3">
+            <div class="card">
+                <a href="aksesoris.php">
+                    <div class="card-video">
+                        <video controls class="img-fluid">
+                            <source src="images/lalisa.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title text-center">AKSESORIS</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 mb-3">
+            <div class="card">
+                <a href="grafik.php">
+                    <div class="card-video">
+                        <video controls class="img-fluid">
+                            <source src="images/sayang.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title text-center">GRAFIC</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="about-us container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/shua1.jpg" alt="About Us">
+            </div>
+            <div class="col-md-6 content">
+                <h3>About Us</h3>
+                <p>About Us
+Welcome to Neocult, where fashion meets innovation. Our collection of stylish and unique pieces is designed to make you stand out. We believe in empowering individuals through fashion and providing high-quality, sustainable clothing options.
+
+</p> <p> Neocult represents a new wave of culture, blending contemporary trends with timeless elegance. Our commitment to sustainability and quality is at the heart of everything we do, ensuring that our pieces not only look good but also make you feel good.
+
+We are proud to introduce Joshua Hong from Seventeen as our brand ambassador.</p><p> With his impeccable style and influence in the fashion world, Joshua perfectly embodies the spirit of Neocult, bringing a fresh and dynamic edge to our brand.
+
+Join us on this journey and be a part of the Neocult revolution, where fashion is not just about clothing, but a lifestyle and a statement.
+
+</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class=" text-center " style="background-color:#b6dcec;">
+  <!-- Grid container -->
+  <div class="container p-4">
+
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+      <!-- Github -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+
+
+    <!-- Section: Form -->
+    <section class="">
+      <form action="">
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+          <!--Grid column-->
+          <div class="col-auto">
+            <p class="pt-2">
+              <strong>Sign up for our newsletter</strong>
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-5 col-12">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="form5Example2" class="form-control" />
+              <label class="form-label" for="form5Example2">Email address</label>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-auto">
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary mb-4">
+              Subscribe
+            </button>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </form>
+    </section>
+    <!-- Section: Form -->
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+      Fashion and accessories are essential aspects of self-expression and individual appearance. Fashion encompasses clothing styles and trends popular at a given time, 
+      while accessories such as shoes, bags, and jewelry provide personal touches that enrich one's appearance. 
+      The evolution of fashion and accessories is influenced by cultural, social, and economic factors, 
+      reflecting the values and identities of societies worldwide. The fashion and accessories industry plays a significant role in the global economy, 
+      involving the design, production, and marketing of products to meet diverse consumer needs and preferences.      </p>
+    </section>
+    <!-- Section: Text -->
+  </div>
+  <!-- Grid container -->
+<!-- Grid container -->
+<div class="container p-4">
+    <!-- Section: Images -->
+    <section class="">
+      <div class="row">
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init
+            class="bg-image hover-overlay shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img src="images/gu6.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init
+            class="bg-image hover-overlay shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img src="images/gu1.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init
+            class="bg-image hover-overlay shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img src="images/gu5.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init
+            class="bg-image hover-overlay shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img src="images/gu3.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init
+            class="bg-image hover-overlay shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img src="images/gu4.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div data-mdb-ripple-init
+            class="bg-image hover-overlay shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img src="images/gu2.jpg" class="w-100" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Images -->
+  </div>
+  <!-- Grid container -->
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright:
+    <a class="text-dark" href="UAS_MANIES.PHP">CARAT.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="path/to/your/custom/footer.css">
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script>
+        function toggleSearchForm() {
+            const searchForm = document.getElementById('searchForm');
+            if (searchForm.style.display === 'none' || searchForm.style.display === '') {
+                searchForm.style.display = 'block';
+            } else {
+                searchForm.style.display = 'none';
+            }
+        }
+    </script>
+     <script>
+        const products = document.querySelectorAll('.product');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        products.forEach(product => {
+            observer.observe(product);
+        });
+    </script>
+</body>
+
+</html>

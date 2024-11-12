@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeranjJang</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="UAS.CSS">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="#">
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#">JUST IN</a></li>
+                <li><a href="#">INTIMATES</a></li>
+                <li><a href="products.html">BASICS</a></li>
+                <li><a href="#">GRAPHICS</a></li>
+                <li><a href="#">CLOTHING</a></li>
+                <li><a href="#">ACCESSORIES</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <a href="#" class="search-icon" onclick="toggleSearch()">🔍</a>
+            <a href="signIn.HTML" class="sign-in">SIGN IN</a>
+            <a href="#" class="cart-icon">🛒</a>
+        </div>
+    </header>
+    <div class="search-box">
+        <input type="text" placeholder="Cari produk...">
+    </div>
+    <main class="body-blok">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-blok">
+                        <img src="https://via.placeholder.com/300x300?text=BAGS" class="card-img-top" alt="Bag">
+                        <div class="card-body">
+                            <h5 class="card-title">BAGS</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-blok">
+                        <img src="https://via.placeholder.com/300x300?text=READY-TO-WEAR" class="card-img-top" alt="Ready-to-wear">
+                        <div class="card-body">
+                            <h5 class="card-title">READY-TO-WEAR</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-blok">
+                        <img src="https://via.placeholder.com/300x300?text=SHOES" class="card-img-top" alt="Shoes">
+                        <div class="card-body">
+                            <h5 class="card-title">SHOES</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card card-blok">
+                        <img src="https://via.placeholder.com/300x300?text=FASHION+JEWELRY" class="card-img-top" alt="Fashion Jewelry">
+                        <div class="card-body">
+                            <h5 class="card-title">FASHION JEWELRY</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>NEWSLETTER</h5>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="E-mail">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h5>CLIENT SERVICES</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Delivery and returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>OUR BOUTIQUES</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Christian Dior Couture Boutiques</a></li>
+                        <li><a href="#">Parfums Christian Dior Boutiques</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>THE HOUSE OF DIOR</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Legal Terms</a></li>
+                        <li><a href="#">Privacy notice</a></li>
+                        <li><a href="#">Cookie management</a></li>
+                        <li><a href="#">Ethics & compliance</a></li>
+                        <li><a href="#">Follow Us</a></li>
+                        <li><a href="#">Dior Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>COUNTRY / REGION</h5>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Indonesia</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <h5>LANGUAGE</h5>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>English</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleSearch() {
+            var searchBox = document.querySelector('.search-box');
+            if (searchBox.style.display === 'none' || searchBox.style.display === '') {
+                searchBox.style.display = 'block';
+            } else {
+                searchBox.style.display = 'none';
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

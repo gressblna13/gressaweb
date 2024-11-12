@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="UAS.CSS">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-header">KeranjJang</div>
+        <div class="login-subheader">MANIESS</div>
+        <div class="tab-container">
+            <button class="tab active" onclick="showTab('login')">Log in</button>
+            <button class="tab" onclick="showTab('signup')">Sign up</button>
+        </div>
+        <div id="login" class="login-form">
+            <input type="text" placeholder="Masukkan email atau nama pengguna">
+            <input type="password" placeholder="Kata sandi">
+            <a href="UAS.HTML" class="button">Masuk</a>
+            <a href="#">Lupa kata sandi?</a>
+        </div>
+        
+        <div id="signup" class="login-form" style="display: none;">
+            <input type="text" placeholder="Enter email">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+            <button>Sign up</button>
+        </div>
+        <div class="social-login">
+            <a href="#">👤</a>
+            <a href="#">🐦</a>
+            <a href="#">🅖</a>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.getElementById('login').style.display = tab === 'login' ? 'block' : 'none';
+            document.getElementById('signup').style.display = tab === 'signup' ? 'block' : 'none';
+            document.querySelectorAll('.tab').forEach(function(button) {
+                button.classList.remove('active');
+            });
+            document.querySelector('.tab-container .tab[onclick="showTab(\'' + tab + '\')"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>

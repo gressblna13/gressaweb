@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="UAS.CSS">
+</head>
+<body class="signup">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-6 d-none d-md-block bg-success text-white text-center p-5">
+                <div class="signin-section">
+                    <h2>Selamat Datang Kembali!</h2>
+                    <p>Untuk tetap terhubung dengan kami, silahkan masuk dengan akun anda</p>
+                    <button class="btn btn-light mt-3">SIGN IN</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="signup-section p-5">
+                    <h2>Buat Akun</h2>
+                    <div class="social-login my-3">
+                        <button class="btn btn-outline-primary mx-1"><i class="fab fa-facebook-f"></i></button>
+                        <button class="btn btn-outline-danger mx-1"><i class="fab fa-google"></i></button>
+                        <button class="btn btn-outline-info mx-1"><i class="fab fa-linkedin-in"></i></button>
+                    </div>
+                    <p>atau gunakan email anda untuk registrasi</p>
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nama" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block mt-3">SIGN UP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>

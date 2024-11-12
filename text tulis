@@ -1,0 +1,66 @@
+buatlah seperti ini untuk halaman saya yang lain dari database products = prakaianklasik.php 
+productsaksesori  = aksesoris.php
+productsgrafik = grafik.php 
+productssepatuklasik = sepatuklasik.php
+productstrend = trend.php
+
+
+sekarang sepatuklasik.php saya ini tolong rapihkan untuk hero nya tolong samakan dengan trend.php. dan tolong buat juga icon keranjang dan button pesan sekarang nya buat warna nya pink dan blue pastel , lalu tambahkan 
+lagi whislist nya di pojok kanan atas yang kelar saat kursor menyentuh card nya 
+
+
+tolong gunakan langkah langkah yang anda berikan sebelumnya  fitur pencarian yang berfungsi dengan baik di epatuklasik.php, berikut adalah langkah-langkah lengkap beserta dengan kode yang telah disesuaikan untuk memanfaatkan tabel productssepatuklasik dalam basis data Anda:
+
+Menambahkan Kode Pencarian di sepatuklasik.php:
+Tambahkan ikon pencarian, form pencarian, dan skrip JavaScript untuk menampilkan dan menyembunyikan form pencarian.
+Tambahkan fungsionalitas untuk menangani pencarian di sepatuklasik.php.
+
+<section id="products" class="products container">
+        <h1 class="section-title text-center mb-5">Sepatu Pria</h1>
+        <div class="product-grid">
+            <?php
+            $sql = "SELECT * FROM productssepatuklasik WHERE category='men' LIMIT 8";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="product">';
+                    echo '<img src="images/' . $row["image"] . '" alt="' . $row["name"] . '">';
+                    echo '<h2>' . $row["name"] . '</h2>';
+                    echo '<p>' . formatRupiah($row["price"]) . '</p>';
+                    echo '<a href="beli.php?id=' . $row["id"] . '&category=productssepatuklasik" class="btn btn-buy">Beli Sekarang</a>';
+                    echo '<a href="cart.php?add=' . $row["id"] . '" class="btn btn-cart"><i class="bi bi-cart"></i></a>';
+                    echo '<i class="bi bi-heart wishlist-icon" data-product-id="' . $row["id"] . '"></i>';
+                    echo '</div>';
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
+        </div>
+    </section>
+
+    <section class="products container">
+        <h1 class="section-title text-center mb-5">Sepatu Wanita</h1>
+        <div class="product-grid">
+            <?php
+            $sql = "SELECT * FROM productssepatuklasik WHERE category='women' LIMIT 8";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="product">';
+                    echo '<img src="images/' . $row["image"] . '" alt="' . $row["name"] . '">';
+                    echo '<h2>' . $row["name"] . '</h2>';
+                    echo '<p>' . formatRupiah($row["price"]) . '</p>';
+                    echo '<a href="beli.php?id=' . $row["id"] . '&category=productssepatuklasik" class="btn btn-buy">Beli Sekarang</a>';
+                    echo '<a href="cart.php?add=' . $row["id"] . '" class="btn btn-cart"><i class="bi bi-cart"></i></a>';
+                    echo '<i class="bi bi-heart wishlist-icon" data-product-id="' . $row["id"] . '"></i>';
+                    echo '</div>';
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
+        </div>
+    </section>
